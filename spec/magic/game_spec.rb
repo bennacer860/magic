@@ -1,19 +1,20 @@
 require 'rspec'
 require_relative './../../config/spec_helper.rb'
 require_relative './../../lib/magic/game.rb'
+require_relative './../../lib/magic/player.rb'
 
 describe Magic::Game do
   before :each do
-    game = double("game")
+    @game = Magic::Game.create
+    @p1   = Magic::Player.create(name: "John")
+    @p2   = Magic::Player.create(name: "Marcus")
   end
 
   it "create one game" do
-    game = Magic::Game.new
-    expect(game).to be_an_instance_of(Magic::Game)
+    expect(Magic::Game.count).to eq(1)
   end
 
   it "bring players to game" do
-    game = Magic::Game.new
-    expect(game.players).to eq([player1, player2])
+    expect(@game.players).to eq([@p1, @p2])
   end
 end
