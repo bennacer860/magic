@@ -1,6 +1,7 @@
 require_relative './../../../config/spec_helper.rb'
 require_relative './../../../lib/magic/model/match.rb'
 require_relative './../../../lib/magic/model/player.rb'
+require_relative './../../../lib/magic/model/turn.rb'
 
 describe Magic::Model::Match do
   before :each do
