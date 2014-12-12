@@ -10,4 +10,3 @@ module Magic
     end
   end
 end
-
