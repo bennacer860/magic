@@ -8,6 +8,9 @@ describe Magic::Game do
     @game = Magic::Game.create
     @p1   = Magic::Player.create(name: "John")
     @p2   = Magic::Player.create(name: "Marcus")
+
+    @game.players << [@p1, @p2]
+    @game.save!
   end
 
   it "create one game" do

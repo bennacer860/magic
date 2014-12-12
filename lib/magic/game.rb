@@ -3,8 +3,9 @@ require 'mongoid'
 module Magic
   class Game
     include Mongoid::Document
-    field :name
+    has_many :players
 
+    field :name
   end
 end
 
