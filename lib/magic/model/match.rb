@@ -2,7 +2,7 @@ require 'mongoid'
 
 module Magic
   module Model
-    class Game
+    class Match
       include Mongoid::Document
       has_many :players
 
