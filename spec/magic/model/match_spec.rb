@@ -29,7 +29,7 @@ describe Magic::Model::Match do
         @p1.turns << @turn
         @p1.save!
 
-        @phase = Magic::Model::Phase.create
+        @phase = Magic::Model::Phase.create(turn_id: @turn.id)
         @turn.phases << @phase
         @turn.save!
       end
@@ -44,3 +44,4 @@ describe Magic::Model::Match do
     end
   end
 end
+
