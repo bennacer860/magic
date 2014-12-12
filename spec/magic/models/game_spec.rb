@@ -1,7 +1,7 @@
 require 'rspec'
-require_relative './../../config/spec_helper.rb'
-require_relative './../../lib/magic/game.rb'
-require_relative './../../lib/magic/player.rb'
+require_relative './../../../config/spec_helper.rb'
+require_relative './../../../lib/magic/models/game.rb'
+require_relative './../../../lib/magic/models/player.rb'
 
 describe Magic::Game do
   before :each do
