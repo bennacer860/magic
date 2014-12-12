@@ -2,7 +2,6 @@ module Magic
   module Model
     class Phase
       include Mongoid::Document
-      belongs_to :turn
 
       UNTAP        = "untap"
       UPKEEP       = "upkeep"
@@ -20,7 +19,20 @@ module Magic
       PHASES       = [UNTAP, UPKEEP, DRAW, MAIN, BEGIN_COMBAT, ATTACK, BLOCK, 
                       DAMAGE, END_COMBAT, SECOND_MAIN, SECOND_END, CLEANUP]
 
+      belongs_to :turn
       field :name, type: String
+
+      before_create :set_current_name
+
+      def current_turn
+        Turn.find(self.turn_id)
+      end
+
+      def set_current_name
+        if self.current_turn.phases.size == 0
+          self.name = UNTAP
+        end
+      end
     end
   end
 end

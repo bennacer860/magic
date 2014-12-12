@@ -1,12 +1,31 @@
 require_relative './../../../config/spec_helper.rb'
 require_relative './../../../lib/magic/model/phase.rb'
+require_relative './../../../lib/magic/model/player.rb'
+require_relative './../../../lib/magic/model/turn.rb'
+require_relative './../../../lib/magic/model/match.rb'
 
 describe Magic::Model::Phase do
   before :each do
-    @phase = Magic::Model::Phase.create
+    @p1    = Magic::Model::Player.create(name: "John")
+    @mach  = Magic::Model::Match.create(players: [@p1])
+    @first_turn  = Magic::Model::Turn.create
+    @p1.turns << @first_turn
+    @p1.save
+    @first_phase = Magic::Model::Phase.create(turn_id: @first_turn.id)
   end
 
-  it "return a new instance" do
-    expect(@phase).to be_an_instance_of(Magic::Model::Phase)
+  context "when one phase is created" do
+    it "return a new instance" do
+      expect(@first_phase).to be_an_instance_of(Magic::Model::Phase)
+    end
+
+    it "set turn" do
+      expect(@first_phase.turn_id).to eq(@first_turn.id)
+    end
+
+    it "set current name" do
+      expect(@first_phase.name).to eq("untap")
+    end
   end
 end
+
