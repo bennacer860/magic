@@ -1,3 +1,4 @@
+require 'rspec'
 require 'mongoid'
 require 'database_cleaner'
 
