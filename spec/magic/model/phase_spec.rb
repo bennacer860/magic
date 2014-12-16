@@ -11,20 +11,36 @@ describe Magic::Model::Phase do
     @first_turn  = Magic::Model::Turn.create
     @p1.turns << @first_turn
     @p1.save
-    @first_phase = Magic::Model::Phase.create(turn_id: @first_turn.id)
+    @first_phase  = Magic::Model::Phase.create(turn_id: @first_turn.id)
   end
 
-  context "when one phase is created" do
-    it "return a new instance" do
-      expect(@first_phase).to be_an_instance_of(Magic::Model::Phase)
+  context "when turn is created" do
+    context "when first phase is created" do
+      it "set current turn" do
+        expect(@first_phase.turn_id).to eq(@first_turn.id)
+      end
+
+      it "return a new instance" do
+        expect(@first_phase).to be_an_instance_of(Magic::Model::Phase)
+      end
+
+      it "set name" do
+        expect(@first_phase.name).to eq("untap")
+      end
     end
 
-    it "set turn" do
-      expect(@first_phase.turn_id).to eq(@first_turn.id)
-    end
+    context "when second phase is created" do
+      before :each do
+        @second_phase = Magic::Model::Phase.create(turn_id: @first_turn.id)
+      end
 
-    it "set current name" do
-      expect(@first_phase.name).to eq("untap")
+      it "set current turn" do
+        expect(@second_phase.turn_id).to eq(@first_turn.id)
+      end
+
+      it "set name" do
+        expect(@second_phase.name).to eq(Magic::Model::Phase::UPKEEP)
+      end
     end
   end
 end

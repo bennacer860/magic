@@ -28,9 +28,17 @@ module Magic
         Turn.find(self.turn_id)
       end
 
+      def get_name
+        turn = Turn.find(self.turn_id)
+        phase_num = turn.phases.size
+        PHASES[phase_num]
+      end
+
       def set_current_name
         if self.current_turn.phases.size == 0
           self.name = UNTAP
+        else
+          self.name = get_name
         end
       end
     end
