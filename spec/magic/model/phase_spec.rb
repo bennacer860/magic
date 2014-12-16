@@ -42,6 +42,22 @@ describe Magic::Model::Phase do
         expect(@second_phase.name).to eq(Magic::Model::Phase::UPKEEP)
       end
     end
+
+
+    context "when third phase is created" do
+      before :each do
+        second_phase = Magic::Model::Phase.create(turn_id: @first_turn.id)
+        @third_phase = Magic::Model::Phase.create(turn_id: @first_turn.id)
+      end
+
+      it "set current turn" do
+        expect(@third_phase.turn_id).to eq(@first_turn.id)
+      end
+
+      it "set name" do
+        expect(@third_phase.name).to eq(Magic::Model::Phase::DRAW)
+      end
+    end
   end
 end
 

@@ -30,8 +30,8 @@ module Magic
 
       def get_name
         turn = Turn.find(self.turn_id)
-        phase_num = turn.phases.size
-        PHASES[phase_num]
+        index = turn.phases.size
+        PHASES[index]
       end
 
       def set_current_name
