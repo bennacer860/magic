@@ -34,11 +34,11 @@ describe Magic::Model::Match do
         @turn.save!
       end
 
-      it "create turn" do
+      it "player have first turn" do
         expect(@p1.turns).to eq([@turn])
       end
 
-      it "create phase" do
+      it "player have first phase" do
         expect(@p1.turns.first.phases).to eq([@phase])
       end
     end
