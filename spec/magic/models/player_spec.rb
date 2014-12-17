@@ -1,3 +1,5 @@
+require_relative './../../../config/spec_helper.rb'
+
 describe Player do
   before :each do
     @player = create(:player)
