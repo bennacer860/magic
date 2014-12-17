@@ -2,12 +2,12 @@ require_relative './../../../config/spec_helper.rb'
 
 describe Match do
   before :each do
-    @match = Match.create
-    @p1    = Player.create(name: "John")
-    @p2    = Player.create(name: "Marcus")
+    subject { Match.new }
+    @p1  = Player.create(name: "John")
+    @p2  = Player.create(name: "Marcus")
 
-    @match.players << [@p1, @p2]
-    @match.save!
+    subject.players << [@p1, @p2]
+    subject.save!
   end
 
   context "create one match" do
@@ -16,7 +16,7 @@ describe Match do
     end
 
     it "bring players to match" do
-      expect(@match.players).to eq([@p1, @p2])
+      expect(subject.players).to eq([@p1, @p2])
     end
 
     context "play first turn" do
