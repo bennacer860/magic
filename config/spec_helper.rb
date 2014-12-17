@@ -7,6 +7,7 @@ ENV["RACK_ENV"] = "development"
 Mongoid.load!("./db/mongoid.yml")
 
 Dir["./lib/magic/models/*.rb"].each { |f| require f }
+Dir["./spec/factories/*.rb"].each { |f| require f }
 
 RSpec.configure do |config|
   #config factory girl
