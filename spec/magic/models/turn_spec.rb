@@ -1,5 +1,4 @@
 require_relative './../../../config/spec_helper.rb'
-require_relative './../../../lib/magic/models/turn.rb'
 
 describe Turn do
   before :each do
