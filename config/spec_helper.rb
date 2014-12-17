@@ -1,6 +1,7 @@
 require 'rspec'
 require 'mongoid'
 require 'database_cleaner'
+require 'factory_girl'
 
 ENV["RACK_ENV"] = "development"
 Mongoid.load!("./db/mongoid.yml")
