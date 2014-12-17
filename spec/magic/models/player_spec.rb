@@ -1,6 +1,6 @@
 require_relative './../../../config/spec_helper.rb'
-require_relative './../../../lib/magic/model/player.rb'
-require_relative './../../../lib/magic/model/turn.rb'
+require_relative './../../../lib/magic/models/player.rb'
+require_relative './../../../lib/magic/models/turn.rb'
 require_relative './../../../spec/factories/players.rb'
 
 describe Player do
