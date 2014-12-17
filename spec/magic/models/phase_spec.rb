@@ -26,16 +26,13 @@ describe Phase do
     end
 
     context "when second phase is created" do
-      before :each do
-        @second_phase = Phase.create(turn_id: @first_turn.id)
-      end
-
+      let(:second_phase) { Phase.create(turn_id: @first_turn.id) }
       it "set current turn" do
-        expect(@second_phase.turn_id).to eq(@first_turn.id)
+        expect(second_phase.turn_id).to eq(@first_turn.id)
       end
 
       it "set name" do
-        expect(@second_phase.name).to eq(Phase::UPKEEP)
+        expect(second_phase.name).to eq(Phase::UPKEEP)
       end
     end
 
