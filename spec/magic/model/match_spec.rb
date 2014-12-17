@@ -44,4 +44,3 @@ describe Match do
     end
   end
 end
-

@@ -60,4 +60,3 @@ describe Phase do
     end
   end
 end
-
