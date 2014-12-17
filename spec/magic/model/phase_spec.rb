@@ -4,14 +4,14 @@ require_relative './../../../lib/magic/model/player.rb'
 require_relative './../../../lib/magic/model/turn.rb'
 require_relative './../../../lib/magic/model/match.rb'
 
-describe Magic::Model::Phase do
+describe Phase do
   before :each do
-    @p1    = Magic::Model::Player.create(name: "John")
-    @mach  = Magic::Model::Match.create(players: [@p1])
-    @first_turn  = Magic::Model::Turn.create
+    @p1    = Player.create(name: "John")
+    @mach  = Match.create(players: [@p1])
+    @first_turn  = Turn.create
     @p1.turns << @first_turn
     @p1.save
-    @first_phase  = Magic::Model::Phase.create(turn_id: @first_turn.id)
+    @first_phase  = Phase.create(turn_id: @first_turn.id)
   end
 
   context "when turn is created" do
@@ -21,7 +21,7 @@ describe Magic::Model::Phase do
       end
 
       it "return a new instance" do
-        expect(@first_phase).to be_an_instance_of(Magic::Model::Phase)
+        expect(@first_phase).to be_an_instance_of(Phase)
       end
 
       it "set name" do
@@ -31,7 +31,7 @@ describe Magic::Model::Phase do
 
     context "when second phase is created" do
       before :each do
-        @second_phase = Magic::Model::Phase.create(turn_id: @first_turn.id)
+        @second_phase = Phase.create(turn_id: @first_turn.id)
       end
 
       it "set current turn" do
@@ -39,15 +39,15 @@ describe Magic::Model::Phase do
       end
 
       it "set name" do
-        expect(@second_phase.name).to eq(Magic::Model::Phase::UPKEEP)
+        expect(@second_phase.name).to eq(Phase::UPKEEP)
       end
     end
 
 
     context "when third phase is created" do
       before :each do
-        second_phase = Magic::Model::Phase.create(turn_id: @first_turn.id)
-        @third_phase = Magic::Model::Phase.create(turn_id: @first_turn.id)
+        second_phase = Phase.create(turn_id: @first_turn.id)
+        @third_phase = Phase.create(turn_id: @first_turn.id)
       end
 
       it "set current turn" do
@@ -55,7 +55,7 @@ describe Magic::Model::Phase do
       end
 
       it "set name" do
-        expect(@third_phase.name).to eq(Magic::Model::Phase::DRAW)
+        expect(@third_phase.name).to eq(Phase::DRAW)
       end
     end
   end

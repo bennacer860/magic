@@ -1,46 +1,44 @@
-module Magic
-  module Model
-    class Phase
-      include Mongoid::Document
+require 'mongoid'
 
-      UNTAP        = "untap"
-      UPKEEP       = "upkeep"
-      DRAW         = "draw"
-      MAIN         = "main"
-      BEGIN_COMBAT = "begin_combat"
-      ATTACK       = "attack"
-      BLOCK        = "block"
-      DAMAGE       = "damage"
-      END_COMBAT   = "end_combat"
-      SECOND_MAIN  = "second_main"
-      SECOND_END   = "second_end"
-      CLEANUP      = "cleanup"
+class Phase
+  include Mongoid::Document
 
-      PHASES       = [UNTAP, UPKEEP, DRAW, MAIN, BEGIN_COMBAT, ATTACK, BLOCK, 
-                      DAMAGE, END_COMBAT, SECOND_MAIN, SECOND_END, CLEANUP]
+  UNTAP        = "untap"
+  UPKEEP       = "upkeep"
+  DRAW         = "draw"
+  MAIN         = "main"
+  BEGIN_COMBAT = "begin_combat"
+  ATTACK       = "attack"
+  BLOCK        = "block"
+  DAMAGE       = "damage"
+  END_COMBAT   = "end_combat"
+  SECOND_MAIN  = "second_main"
+  SECOND_END   = "second_end"
+  CLEANUP      = "cleanup"
 
-      belongs_to :turn
-      field :name, type: String
+  PHASES       = [UNTAP, UPKEEP, DRAW, MAIN, BEGIN_COMBAT, ATTACK, BLOCK, 
+                  DAMAGE, END_COMBAT, SECOND_MAIN, SECOND_END, CLEANUP]
 
-      before_create :set_current_name
+  belongs_to :turn
+  field :name, type: String
 
-      def current_turn
-        Turn.find(self.turn_id)
-      end
+  before_create :set_current_name
 
-      def get_name
-        turn = Turn.find(self.turn_id)
-        index = turn.phases.size
-        PHASES[index]
-      end
+  def current_turn
+    Turn.find(self.turn_id)
+  end
 
-      def set_current_name
-        if self.current_turn.phases.size == 0
-          self.name = UNTAP
-        else
-          self.name = get_name
-        end
-      end
+  def get_name
+    turn = Turn.find(self.turn_id)
+    index = turn.phases.size
+    PHASES[index]
+  end
+
+  def set_current_name
+    if self.current_turn.phases.size == 0
+      self.name = UNTAP
+    else
+      self.name = get_name
     end
   end
 end

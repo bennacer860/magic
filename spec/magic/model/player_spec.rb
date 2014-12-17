@@ -1,12 +1,12 @@
 require_relative './../../../config/spec_helper.rb'
 require_relative './../../../lib/magic/model/player.rb'
 
-describe Magic::Model::Player do
+describe Player do
   before :each do
-    @player = Magic::Model::Player.create(name: "John")
+    @player = Player.create(name: "John")
   end
 
   it "return an instance of Player" do
-    expect(@player).to be_an_instance_of(Magic::Model::Player)
+    expect(@player).to be_an_instance_of(Player)
   end
 end

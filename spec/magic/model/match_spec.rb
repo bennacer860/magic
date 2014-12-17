@@ -4,11 +4,11 @@ require_relative './../../../lib/magic/model/player.rb'
 require_relative './../../../lib/magic/model/turn.rb'
 require_relative './../../../lib/magic/model/phase.rb'
 
-describe Magic::Model::Match do
+describe Match do
   before :each do
-    @match = Magic::Model::Match.create
-    @p1    = Magic::Model::Player.create(name: "John")
-    @p2    = Magic::Model::Player.create(name: "Marcus")
+    @match = Match.create
+    @p1    = Player.create(name: "John")
+    @p2    = Player.create(name: "Marcus")
 
     @match.players << [@p1, @p2]
     @match.save!
@@ -16,7 +16,7 @@ describe Magic::Model::Match do
 
   context "create one match" do
     it "create one match" do
-      expect(Magic::Model::Match.count).to eq(1)
+      expect(Match.count).to eq(1)
     end
 
     it "bring players to match" do
@@ -25,11 +25,11 @@ describe Magic::Model::Match do
 
     context "play first turn" do
       before :each do
-        @turn  = Magic::Model::Turn.create
+        @turn  = Turn.create
         @p1.turns << @turn
         @p1.save!
 
-        @phase = Magic::Model::Phase.create(turn_id: @turn.id)
+        @phase = Phase.create(turn_id: @turn.id)
         @turn.phases << @phase
         @turn.save!
       end

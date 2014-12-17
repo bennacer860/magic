@@ -1,12 +1,8 @@
 require 'mongoid'
 
-module Magic
-  module Model
-    class Match
-      include Mongoid::Document
-      has_many :players
+class Match
+  include Mongoid::Document
+  has_many :players
 
-      field :name
-    end
-  end
+  field :name
 end
