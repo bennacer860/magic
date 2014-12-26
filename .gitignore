@@ -1,2 +1,3 @@
 /db/mongoid.yml
+/lib/magic/client/images/cards/*
 todo.txt
