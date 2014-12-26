@@ -5,7 +5,7 @@ class Main < Gosu::Window
   def initialize
     super 640, 480, false
     self.caption = "Magic"
-    @cursor = Gosu::Image.new(self, "images/cursor.png", false)
+    @cursor = Gosu::Image.new(self, "images/screen/cursor.png", false)
   end
 
   def update
