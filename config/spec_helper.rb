@@ -3,7 +3,7 @@ require 'mongoid'
 require 'database_cleaner'
 require 'factory_girl'
 
-ENV["RACK_ENV"] = "development"
+ENV["RACK_ENV"] = "test"
 Mongoid.load!("./db/mongoid.yml")
 
 Dir["./spec/factories/*.rb"].each { |f| require f }
